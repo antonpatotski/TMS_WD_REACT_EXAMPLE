@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import Menu from "./components/menu/menu";
 import Tabs from "./components/tabs/tabs";
@@ -21,6 +21,27 @@ const user = {
 function App() {
   const [ activeTab, setActiveTab ] = useState(TABS[0]?.key);
   const [ formValues, setFormValues ] = useState(formDefaultValues);
+  const [ posts, setPosts ] = useState([]);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const urlParams = new URLSearchParams({
+          limit: 30, // count of elements on page
+          offset: 1, // page number
+        });
+        const { results: postsResponse } = await fetch('https://studapi.teachmeskills.by//blog/posts?' + urlParams)
+          .then(response => response.json())
+
+        setPosts(postsResponse)
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    getPosts();
+  }, []);
+
   const setNewValue = (key, value) => {
     setFormValues({
       ...formValues,// => input: 'test input',  textArea: 'text area',
@@ -34,6 +55,9 @@ function App() {
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={TABS} />
       <Input value={formValues.name} label={formValues.name.label} onChange={setNewValue} />
       <TextArea value={formValues.msg} label={formValues.msg.label} onChange={setNewValue} />
+      {/*<Posts>*/}
+      {/*  */}
+      {/*</Posts>*/}
     </div>
   );
 }
