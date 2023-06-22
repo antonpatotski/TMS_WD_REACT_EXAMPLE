@@ -1,15 +1,18 @@
+import { useState } from "react";
+
 import { ReactComponent as BurgerIcon } from '../../../assets/svg/burgerIcon.svg';
-import './menuButton.scss';
+import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
+
+import './menuButton.scss'
+
 
 const MenuButton = () => {
-  const func = () => {
-    console.log(222)
-  }
-  return (
-    <button onClick={func} className="menuButton btn-custom">
-      <BurgerIcon />
-    </button>
-  )
-}
+  const [isSelected, setIsSelected] = useState(false);
 
-export default MenuButton;
+  return (
+    <button onClick={() => setIsSelected(!isSelected)} className="menuButton btn-custom">
+      {isSelected ? <CrossIcon/> : <BurgerIcon/>}
+    </button>
+  );
+}
+export default MenuButton
