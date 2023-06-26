@@ -2,7 +2,7 @@ import './input.scss';
 
 const Input = (props) => {
   const {
-    value: { value, key },
+    value: InputValue,
     onChange,
     disabled,
     error,
@@ -10,6 +10,7 @@ const Input = (props) => {
     label,
     type = 'text'
   } = props;
+  const { value, key } = InputValue || {};
 
   return (
     <div className="ra-input__container">

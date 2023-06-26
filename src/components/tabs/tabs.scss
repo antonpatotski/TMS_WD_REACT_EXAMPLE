@@ -3,10 +3,6 @@
 
   &-active {
     border-bottom: 2px solid #313037;;
-
-    > p {
-      color: red;
-    }
   }
 
   &-title {
@@ -25,13 +21,13 @@
 
     &-cell{
       padding: 24px 40px;
+      cursor: pointer;
 
       &-title{
         font-weight: 600;
         font-size: 16px;
         line-height: 24px;
         color: #313037;
-        cursor: pointer;
 
         &:hover{
           color: #2231AA;
