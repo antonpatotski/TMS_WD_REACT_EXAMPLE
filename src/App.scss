@@ -2,7 +2,12 @@ body {
   background-color: #f3f3f3;
 }
 
-.App {}
+.App {
+  &--dark {
+    background: #606060;
+    color: #ffff;
+  }
+}
 
 .btn-custom {
   background-color: transparent;

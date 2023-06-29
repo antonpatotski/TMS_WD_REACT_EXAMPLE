@@ -1,0 +1,13 @@
+.theme-toggle {
+  padding: 10px;
+  border: 1px solid #a3a0a0;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 5px;
+
+  &--dark {
+    background-color: #313037;
+    color: #ffffff;
+  }
+}

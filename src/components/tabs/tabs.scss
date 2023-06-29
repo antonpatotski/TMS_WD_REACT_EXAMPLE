@@ -1,6 +1,16 @@
 .tabs {
   padding: 20px;
 
+  &--dark {
+    .tabs-wrap-cell-title {
+      color: #ffffff;
+    }
+
+    .tabs-active {
+      border-bottom: 2px solid #8f8f8f;;
+    }
+  }
+
   &-active {
     border-bottom: 2px solid #313037;;
   }

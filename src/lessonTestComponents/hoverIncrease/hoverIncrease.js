@@ -1,10 +1,10 @@
-import { useState } from "react";
-
 import withCounter from "../../HOC/withCounter";
 import Button from "../../components/button/button";
+import useCounter from "../../hooks/useCounter";
 
 function HoverIncrease(props) {
-  const { counter, incrementCounter } = props;
+  const { counter, incrementCounter } = useCounter();
+
   return (
     <div>
       <Button onClick={() => incrementCounter()}>Increment counter</Button>
@@ -12,4 +12,5 @@ function HoverIncrease(props) {
     </div>
   );
 }
-export default withCounter(HoverIncrease);
+// export default withCounter(HoverIncrease);
+export default HoverIncrease;

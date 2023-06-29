@@ -1,10 +1,15 @@
+import { useContext } from "react";
+
+import { ThemeContext } from "../../context/theme";
+
 import './tabs.scss'
 
 const Tabs = ({ tabs = [], activeTab, setActiveTab }) => {
+  const [ theme ] = useContext(ThemeContext);
   const isTabActive = (name) => activeTab === name;
 
   return(
-    <div className="tabs">
+    <div className={`tabs tabs--${theme}`}>
       <div className="tabs-wrap">
         { tabs.map(({ title, key }) => (
           <div

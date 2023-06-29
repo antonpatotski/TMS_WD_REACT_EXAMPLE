@@ -7,11 +7,11 @@ const PostItem = ({ post, size = 'large' }) => {
         <div className="post-item-body__main-info">
           <p className="post-item-body__date">{ post.date }</p>
           <p className="post-item-body__title">{ post.title }</p>
+          <p className="post-item-body__desc">{post.description}</p>
         </div>
         <img className="post-item-body__image" src={post.image} alt="Post" />
-        <p className="post-item-body__desc">{post.description}</p>
       </div>
-      <div className="post-item__footer"></div>
+      <div className="post-item__footer">Footer</div>
     </div>
   )
 }
