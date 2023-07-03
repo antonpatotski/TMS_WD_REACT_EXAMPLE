@@ -39,6 +39,11 @@
     margin: 10px;
     position: relative;
     padding-bottom: 30px;
+
+    &--no-padding {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   &__error-list {

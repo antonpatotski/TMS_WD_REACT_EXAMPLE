@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const usePosts = () => {
   const [ posts, setPosts ] = useState([]);
+  const [ search, setSearch ] = useState('');
 
   useEffect(() => {
     const getPosts = async () => {
@@ -23,7 +24,9 @@ const usePosts = () => {
   }, []);
 
   return {
-    posts
+    posts,
+    search,
+    setSearch,
   }
 }
 

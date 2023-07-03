@@ -1,6 +1,6 @@
-import { ReactComponent as LikeIcon } from "../../../assets/svg/Like.svg";
-import { ReactComponent as DislikeIcon } from "../../../assets/svg/Down.svg";
-import { ReactComponent as FavoritesIcon } from "../../../assets/svg/Bookmark.svg";
+import { ReactComponent as LikeIcon } from "../../../../assets/svg/Like.svg";
+import { ReactComponent as DislikeIcon } from "../../../../assets/svg/Down.svg";
+import { ReactComponent as FavoritesIcon } from "../../../../assets/svg/Bookmark.svg";
 
 import './postItem.scss';
 

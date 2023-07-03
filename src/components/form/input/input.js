@@ -1,35 +1,38 @@
 import './input.scss';
 
-const Input = (props) => {
-  const {
-    value: InputValue,
-    onChange = () => {},
-    disabled,
-    error,
-    errorMsg,
-    label,
-    type = 'text',
-    refLink = null,
-  } = props;
-  const { value, key } = InputValue || {};
-
+const Input = ({
+  value: inputValue,
+  onChange = () => {},
+  disabled,
+  error,
+  errorMsg,
+  label,
+  type = 'text',
+  refLink = null,
+  noPadding,
+  ...props
+}) => {
   return (
-    <div className="ra-input__container">
+    <div className={`ra-input__container ${noPadding ? 'ra-input__container--no-padding' : ''}`}>
       <label className="ra-input__label">
-        <span>{label}</span>
+        { label && (<span>{label}</span>) }
         <input
           className={`ra-input ${error ? 'ra-input--error' : ''}`}
           disabled={disabled}
-          value={value}
-          onChange={({ target: { value } }) => onChange(key, value)}
+          value={inputValue}
+          onChange={({ target: { value } }) => onChange(value)}
           type={type}
           ref={refLink}
           { ...props }
         />
       </label>
-      <p className="ra-input__error-list">
-        { errorMsg }
-      </p>
+      {
+        errorMsg && (
+          <p className="ra-input__error-list">
+            { errorMsg }
+          </p>
+        )
+      }
     </div>
   )
 }

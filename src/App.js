@@ -20,18 +20,18 @@ const user = {
 }
 
 function App() {
-  const { posts } = usePosts();
+  const { posts, search, setSearch } = usePosts();
   const [ theme, setTheme ] = useState(THEME.light);
 
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
-      <div className={`App App--${theme}`}>
-        <Menu user={user} />
+      <PostsContext.Provider value={{ posts, search, setSearch }}>
+        <div className={`App App--${theme}`}>
+          <Menu user={user} />
 
-        <PostsContext.Provider value={{ posts }}>
           <RoutesComponent />
-        </PostsContext.Provider>
-      </div>
+        </div>
+      </PostsContext.Provider>
     </ThemeContext.Provider>
   );
 }
