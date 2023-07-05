@@ -8,9 +8,9 @@ const Landing = () => {
       {/*<Posts posts={posts} />*/}
       {/*<SignUp />*/}
 
-      <HoverIncrease />
+      {/*<HoverIncrease />*/}
 
-      <HoverIncrease />
+      {/*<HoverIncrease />*/}
     </>
   )
 }

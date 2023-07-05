@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 
+import { setPosts } from "../store/posts";
+import { useDispatch, useSelector } from "react-redux";
+
 const usePosts = () => {
-  const [ posts, setPosts ] = useState([]);
+  const { posts } = useSelector(state => state.posts);
   const [ search, setSearch ] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getPosts = async () => {
@@ -14,7 +18,7 @@ const usePosts = () => {
         const { results: postsResponse } = await fetch('https://studapi.teachmeskills.by/blog/posts?' + urlParams)
           .then(response => response.json())
 
-        setPosts(postsResponse)
+        dispatch(setPosts(postsResponse));
       } catch (e) {
         console.error(e);
       }

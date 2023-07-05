@@ -1,8 +1,11 @@
 body {
   background-color: #f3f3f3;
+  height: 100vh;
 }
 
 .App {
+  height: 100%;
+
   &--dark {
     background: #606060;
     color: #ffff;
@@ -18,4 +21,8 @@ body {
 
 p {
   margin: 0;
+}
+
+#root {
+  height: 100%;
 }

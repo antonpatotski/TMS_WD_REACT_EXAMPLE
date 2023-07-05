@@ -6,7 +6,7 @@ import SearchResults from "./searchResults/searchResults";
 import AllPosts from "./allPosts/allPosts";
 
 const Posts = () => {
-  const { posts, search } = useContext(PostsContext);
+  const { search } = useContext(PostsContext);
 
   return (
     <div className="posts__container">
