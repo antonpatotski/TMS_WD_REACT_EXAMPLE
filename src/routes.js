@@ -16,10 +16,14 @@ const RoutesComponent = () => {
     <Routes>
       <Route path={ROUTES.main} element={<Landing />} />
       <Route path={ROUTES.signUp} element={<SignUp />} />
+
+      {/*<Route path={`${ROUTES.posts}/:postId/user/:userId`} element={<SignUp />} />*/}
+
       <Route path={ROUTES.posts}>
         <Route index element={<ProtectedRoute><Posts /></ProtectedRoute>} />
         <Route path={':postId'} element={<SelectedPost />} />
       </Route>
+
       <Route path="*" element={<Empty />} />
     </Routes>
   )

@@ -3,6 +3,7 @@ import postsReducer from './posts';
 
 export default configureStore({
   reducer: {
-    posts: postsReducer
+    posts: postsReducer,
+    // theme: themeReducer
   }
 })

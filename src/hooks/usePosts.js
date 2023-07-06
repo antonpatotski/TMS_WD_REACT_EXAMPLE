@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { setPosts, setSearch } from "../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 
+let isPostInProcess = false
+
 const usePosts = () => {
   const { posts, search } = useSelector(state => state.posts);
   const dispatch = useDispatch();
@@ -13,6 +15,8 @@ const usePosts = () => {
 
   useEffect(() => {
     const getPosts = async () => {
+      isPostInProcess = true;
+
       try {
         const urlParams = new URLSearchParams({
           limit: 11, // count of elements on page
@@ -27,7 +31,9 @@ const usePosts = () => {
       }
     }
 
-    getPosts();
+    if (!isPostInProcess) {
+      getPosts();
+    }
   }, []);
 
   return {

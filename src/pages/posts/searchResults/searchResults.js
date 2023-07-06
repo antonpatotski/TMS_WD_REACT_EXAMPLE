@@ -5,7 +5,7 @@ import {searchedPosts} from "../../../selectors/searchedPosts";
 
 const SearchResults = () => {
   const { search } = usePosts();
-  const postsResult = useSelector(searchedPosts)
+  const postsResult = useSelector(searchedPosts);
 
   return (
     <div>

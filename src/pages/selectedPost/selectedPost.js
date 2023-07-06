@@ -10,7 +10,7 @@ const SelectedPost = () => {
 
   return (
    !selectedPost
-     ? null
+     ? (<div>No posts found</div>)
      : (
         <div>
           Selected Post Id: { postId }
