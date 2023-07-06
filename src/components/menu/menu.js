@@ -4,7 +4,7 @@ import MenuButton from "./menuButton/menuButton";
 import UserProfile from "./userProfile/userProfile";
 import './menu.scss';
 import MenuSearch from "./menuSearch/menuSearch";
-import {useMemo} from "react";
+import { useMemo } from "react";
 import {useLocation} from "react-router";
 import {ROUTES} from "../../constants/routes";
 // import {ROUTES} from "../../constants/routes";
@@ -33,11 +33,5 @@ const Menu = ({ user }) => {
     </div>
   )
 };
-//
-// const NavLink1 = ({ to, children }) => {
-//   return (
-//     <a href={to}>{ children }</a>
-//   )
-// }
 
 export default Menu;

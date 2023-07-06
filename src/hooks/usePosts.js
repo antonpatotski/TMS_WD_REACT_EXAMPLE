@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { setPosts } from "../store/posts";
+import { setPosts, setSearch } from "../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 
 const usePosts = () => {
-  const { posts } = useSelector(state => state.posts);
-  const [ search, setSearch ] = useState('');
+  const { posts, search } = useSelector(state => state.posts);
   const dispatch = useDispatch();
+
+  const updateSearch = (value) => {
+    dispatch(setSearch(value))
+  }
 
   useEffect(() => {
     const getPosts = async () => {
@@ -30,7 +33,7 @@ const usePosts = () => {
   return {
     posts,
     search,
-    setSearch,
+    setSearch: updateSearch,
   }
 }
 

@@ -3,15 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const postsSlice = createSlice({
   name: 'posts',
   initialState: {
-    posts: []
+    posts: [],
+    search: '',
   },
   reducers: {
     setPosts: (state, action) => {
       state.posts = action.payload;
+    },
+    setSearch: (state, action) => {
+      state.search = action.payload
     }
   },
 });
 // Extract and export each action creator by name
-export const { setPosts } = postsSlice.actions
+export const { setPosts, setSearch } = postsSlice.actions
 // Export the reducer, either as a default or named export
 export default postsSlice.reducer

@@ -1,16 +1,17 @@
-import { useContext } from "react";
-import { PostsContext } from "../../../context/posts";
 import PostItem from "../allPosts/postItem/postItem";
+import usePosts from "../../../hooks/usePosts";
+import {useSelector} from "react-redux";
+import {searchedPosts} from "../../../selectors/searchedPosts";
 
 const SearchResults = () => {
-  const { posts, search } = useContext(PostsContext);
+  const { search } = usePosts();
+  const postsResult = useSelector(searchedPosts)
 
   return (
     <div>
       Search results: { search }
 
-      { posts
-        .filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
+      { postsResult
         .map(post => (
           <PostItem post={post} size="small" />
         ))
