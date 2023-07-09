@@ -11,8 +11,6 @@ const MenuSearch = () => {
   const [ showSearch, setShowSearch ] = useState(false);
   const { search, setSearch } = useContext(PostsContext);
 
-  console.log(search)
-
   return (
     <div className="menu-search">
       { !showSearch && <SearchIcon onClick={() => { setShowSearch(true) }} /> }

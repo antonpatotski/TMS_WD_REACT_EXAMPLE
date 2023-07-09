@@ -1,12 +1,21 @@
-import {useContext} from "react";
-import {PostsContext} from "../../context/posts";
+import {useContext, useEffect} from "react";
+import {useDispatch} from "react-redux";
 
-import './posts.scss';
+import {PostsContext} from "../../context/posts";
 import SearchResults from "./searchResults/searchResults";
 import AllPosts from "./allPosts/allPosts";
 
+import './posts.scss';
+import { fetchPosts } from "../../store/posts";
+
 const Posts = () => {
   const { search } = useContext(PostsContext);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+    // dispatch(({ type: 'posts/fetchPosts/fulfilled' }))
+  }, [])
 
   return (
     <div className="posts__container">
