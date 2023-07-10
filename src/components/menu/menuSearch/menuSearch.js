@@ -2,14 +2,14 @@ import { useContext, useState } from "react";
 
 import { ReactComponent as SearchIcon } from "../../../assets/svg/search.svg";
 import { ReactComponent as CrossIcon } from "../../../assets/svg/cross.svg";
-import { PostsContext } from "../../../context/posts";
 import Input from "../../form/input/input";
 
 import './menuSearch.scss';
+import usePosts from "../../../hooks/usePosts";
 
 const MenuSearch = () => {
   const [ showSearch, setShowSearch ] = useState(false);
-  const { search, setSearch } = useContext(PostsContext);
+  const { search, setSearch } = usePosts();
 
   return (
     <div className="menu-search">

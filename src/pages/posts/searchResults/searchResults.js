@@ -1,7 +1,7 @@
 import PostItem from "../allPosts/postItem/postItem";
 import usePosts from "../../../hooks/usePosts";
-import {useSelector} from "react-redux";
-import {searchedPosts} from "../../../selectors/searchedPosts";
+import { useSelector } from "react-redux";
+import { searchedPosts } from "../../../selectors/searchedPosts";
 
 const SearchResults = () => {
   const { search } = usePosts();

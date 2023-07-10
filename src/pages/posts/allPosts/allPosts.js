@@ -1,15 +1,15 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 
 import PostItem from "./postItem/postItem";
 import { TABS } from "../../../constants/tabs";
 import Tabs from "../../../components/tabs/tabs";
-import { PostsContext } from "../../../context/posts";
 
 import './allPosts.scss';
+import usePosts from "../../../hooks/usePosts";
 
 const Posts = () => {
   const [ activeTab, setActiveTab ] = useState(TABS[0]?.key);
-  const { posts } = useContext(PostsContext);
+  const { posts } = usePosts();
 
   if (posts.length === 0) {
     return null;

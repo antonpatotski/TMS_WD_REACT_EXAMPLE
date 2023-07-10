@@ -14,7 +14,6 @@ const Posts = () => {
 
   useEffect(() => {
     dispatch(fetchPosts());
-    // dispatch(({ type: 'posts/fetchPosts/fulfilled' }))
   }, [])
 
   return (

@@ -15,19 +15,19 @@ export const fetchPosts = createAsyncThunk(
 
     return postsResponse;
   }
-)
+);
 
 const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     posts: [],
     search: '',
-    loading: 'idle',
+    status: 'idle',
   },
   reducers: {
-    setPosts: (state, action) => {
-      state.posts = action.payload;
-    },
+    // setPosts: (state, action) => {
+    //   state.posts = action.payload;
+    // },
     setSearch: (state, action) => {
       state.search = action.payload
     },
@@ -36,18 +36,18 @@ const postsSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder
       .addCase(fetchPosts.pending, (state) => {
-        state.status = 'loading'
+        state.status = 'pending'
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         // Add posts to the state array
         state.posts = action.payload;
-        state.loading = 'succeeded'
+        state.status = 'succeeded';
       })
       .addCase(fetchPosts.rejected, (state) => {
-        state.loading = 'failed';
+        state.status = 'failed';
       })
   },
 });
-export const { setPosts, setSearch } = postsSlice.actions;
+export const { setSearch } = postsSlice.actions;
 // Export the reducer, either as a default or named export
 export default postsSlice.reducer;
