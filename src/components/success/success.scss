@@ -1,0 +1,20 @@
+.success {
+  &__container {
+    border: 1px solid var(--background-colors-medium, #DADADA);
+    padding: 40px;
+    max-width: 544px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__message {
+    color: #313037;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+  }
+}

@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
-import {useContext, useMemo} from "react";
+import {useMemo} from "react";
 
-import { PostsContext } from "../../context/posts";
+import usePosts from "../../hooks/usePosts";
 
 const SelectedPost = () => {
   const { postId } = useParams();
-  const { posts } = useContext(PostsContext);
+  const { posts } = usePosts();
   const selectedPost = useMemo(() => posts.find(({ id }) => id.toString() === postId), [ postId, posts ])
 
   return (

@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { API } from "../helpers/api";
+import {STATUSES} from "../constants/statuses";
 
 // First, create the thunk
 export const fetchPosts = createAsyncThunk(
@@ -6,12 +8,7 @@ export const fetchPosts = createAsyncThunk(
   async () => {
     // Здесь только логика запроса и возврата данных
     // Никакой обработки ошибок
-    const urlParams = new URLSearchParams({
-      limit: 11, // count of elements on page
-      offset: 1, // page number
-    });// limit=11&offset=1
-    const { results: postsResponse } = await fetch('https://studapi.teachmeskills.by/blog/posts?' + urlParams)
-      .then(response => response.json());
+    const { results: postsResponse } = await API.getPosts({ limit: 11, offset: 1 });
 
     return postsResponse;
   }
@@ -22,7 +19,7 @@ const postsSlice = createSlice({
   initialState: {
     posts: [],
     search: '',
-    status: 'idle',
+    status: STATUSES.init,
   },
   reducers: {
     // setPosts: (state, action) => {
@@ -36,15 +33,15 @@ const postsSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder
       .addCase(fetchPosts.pending, (state) => {
-        state.status = 'pending'
+        state.status = STATUSES.inProgress
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         // Add posts to the state array
         state.posts = action.payload;
-        state.status = 'succeeded';
+        state.status = STATUSES.success;
       })
       .addCase(fetchPosts.rejected, (state) => {
-        state.status = 'failed';
+        state.status = STATUSES.failed;
       })
   },
 });

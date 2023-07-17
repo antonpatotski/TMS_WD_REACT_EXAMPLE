@@ -3,7 +3,7 @@ import withCounter from "../../HOC/withCounter";
 import Button from "../../components/button/button";
 
 function ClickIncrease(props) {
-  const { counter, incrementCounter } = props;
+  const [ counter, setCounter ] = useState(0);
   const [ isEven, setIsEven ] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function ClickIncrease(props) {
 
   return (
     <div>
-      <Button onClick={incrementCounter}>Increment counter</Button>
+      <Button onClick={() => setCounter(counter + 1)}>Increment counter</Button>
       <p> Value of 'counter' in ClickIncrease: {counter}</p>
       <p> Is value Even: { String(isEven) }</p>
       <p> Is value Even2: { String(isEven2) }</p>

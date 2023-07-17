@@ -1,5 +1,7 @@
+@import "src/styles/sizes";
+
 .menu {
-  height: 84px;
+  height: $menuHeight;
   background-color: #2231AA;
   display: flex;
   justify-content: space-between;

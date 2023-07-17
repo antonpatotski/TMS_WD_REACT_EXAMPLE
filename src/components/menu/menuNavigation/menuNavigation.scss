@@ -1,0 +1,19 @@
+@import "src/styles/sizes";
+
+.menu-navigation {
+  &__container {
+    width: 0;
+    height: calc(100vh - $menuHeight);
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    top: $menuHeight;
+    transition: width 1s;
+    overflow: hidden;
+
+    &--shown {
+      display: block;
+      width: 236px;
+    }
+  }
+}

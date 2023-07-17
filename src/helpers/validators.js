@@ -14,3 +14,10 @@ export const emailValidator = (value) => {
 
   return null;
 }
+
+export const passwordValidator = (value) => {
+  if (value?.length < 6) return 'Name should be longer then 8';
+
+  return null;
+}
+
