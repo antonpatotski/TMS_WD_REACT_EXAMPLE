@@ -6,6 +6,7 @@ import Empty from "./pages/empty/empty";
 import Posts from "./pages/posts/posts";
 import SelectedPost from "./pages/selectedPost/selectedPost";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+import ActivateUser from "./pages/activateUser/activateUser";
 
 // user/settings/personalInfo
 // / => Landing
@@ -23,6 +24,8 @@ const RoutesComponent = () => {
         <Route index element={<ProtectedRoute><Posts /></ProtectedRoute>} />
         <Route path={':postId'} element={<SelectedPost />} />
       </Route>
+
+      <Route path={`${ROUTES.activate}/:uid/:token`} element={<ActivateUser />} />
 
       <Route path="*" element={<Empty />} />
     </Routes>
