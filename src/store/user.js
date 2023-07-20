@@ -28,7 +28,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUser.fulfilled, (state, { payload }) => {
         // Add posts to the state array
-        state.user = userSerializer(payload.results && payload?.results[0]);
+        state.user = userSerializer(payload);
       })
       .addCase(fetchUser.rejected, (state, { payload }) => {
         state.status = STATUSES.failed;

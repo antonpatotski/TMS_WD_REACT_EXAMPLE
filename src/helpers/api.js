@@ -56,7 +56,7 @@ export const API = {
     return request.get(`${URL}/blog/posts/${postId}/`);
   },
   getUser: (accessToken) => {
-    return request.get(`${URL}/auth/users/`, { token: accessToken });
+    return request.get(`${URL}/auth/users/me/`, { token: accessToken });
   },
   refreshToken: (refresh) => {
     return request.post(`${URL}/auth/jwt/refresh/`, JSON.stringify({ refresh }));
