@@ -2,17 +2,18 @@
 
 .menu-navigation {
   &__container {
-    width: 0;
+    width: 236px;
     height: calc(100vh - $menuHeight);
     background-color: #fff;
     position: fixed;
     left: 0;
     top: $menuHeight;
-    transition: width 1s;
+    transition: transform 1s;
     overflow: hidden;
+    transform: translate(-100%);
 
     &--shown {
-      width: 236px;
+      transform: translate(0);
     }
   }
 }

@@ -14,12 +14,24 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
+export const fetchPost = createAsyncThunk(
+  'posts/fetchPost',
+  async (postId) => {
+    // Здесь только логика запроса и возврата данных
+    // Никакой обработки ошибок
+    const result = await API.logIn(postId);
+
+    return result;
+  }
+);
+
 const postsSlice = createSlice({
   name: 'posts',
   initialState: {
     posts: [],
     search: '',
     status: STATUSES.init,
+    selectedPost: null,
   },
   reducers: {
     // setPosts: (state, action) => {
@@ -42,6 +54,11 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.rejected, (state) => {
         state.status = STATUSES.failed;
+      })
+
+      .addCase(fetchPost.fulfilled, (state, action) => {
+        // Add posts to the state array
+        state.selectedPost = action.payload;
       })
   },
 });

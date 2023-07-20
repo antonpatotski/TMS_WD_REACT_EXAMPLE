@@ -2,7 +2,7 @@ import { setSearch } from "../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 
 const usePosts = () => {
-  const { posts, status, search } = useSelector((state) => {
+  const { posts, status, search, selectedPost } = useSelector((state) => {
     return state.posts;
   });
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const usePosts = () => {
     posts,
     search,
     status,
+    selectedPost,
     setSearch: updateSearch,
   }
 }

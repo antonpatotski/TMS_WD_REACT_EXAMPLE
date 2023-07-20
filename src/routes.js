@@ -7,6 +7,8 @@ import Posts from "./pages/posts/posts";
 import SelectedPost from "./pages/selectedPost/selectedPost";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 import ActivateUser from "./pages/activateUser/activateUser";
+import {Navigate} from "react-router";
+import SignIn from "./pages/signIn/signIn";
 
 // user/settings/personalInfo
 // / => Landing
@@ -15,8 +17,9 @@ import ActivateUser from "./pages/activateUser/activateUser";
 const RoutesComponent = () => {
   return (
     <Routes>
-      <Route path={ROUTES.main} element={<Landing />} />
+      <Route path={ROUTES.main} element={ <Navigate to={ROUTES.posts} replace />} />
       <Route path={ROUTES.signUp} element={<SignUp />} />
+      <Route path={ROUTES.signIn} element={<SignIn />} />
 
       {/*<Route path={`${ROUTES.posts}/:postId/user/:userId`} element={<SignUp />} />*/}
 

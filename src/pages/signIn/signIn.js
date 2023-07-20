@@ -1,26 +1,29 @@
 import {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 import Form from "../../components/form/form/form";
 import Input from "../../components/form/input/input";
 import Button from "../../components/button/button";
 import Success from "../../components/success/success";
-import {emailValidator, nameValidation, passwordValidator} from "../../helpers/validators";
+import {emailValidator, passwordValidator} from "../../helpers/validators";
 import {Title} from "../../components/title/title";
-import {API} from "../../helpers/api";
-
-import './signUp.scss';
-import {NavLink} from "react-router-dom";
 import {ROUTES} from "../../constants/routes";
 
-const SignUp = () => {
+import './signIn.scss';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchTokens} from "../../store/auth";
+
+const SignIn = () => {
   const [form, setForm] = useState({});
   const [ showSuccessMessage, setShowSuccessMessage ] = useState(false);
+  const dispatch = useDispatch();
+  const { status: authStatus, error } = useSelector(state => state.token)
   const setValue = (key, value) => {
-    setForm({...form, [key] : value})
+    setForm({...form, [key] : value});
   }
-  const onSubmit = async () => {
+  const onSubmit = () => {
     try {
-      await API.setAuth(form);
+      dispatch(fetchTokens(form));
       setShowSuccessMessage(true);
     } catch (e) {
       console.warn(e);
@@ -28,7 +31,7 @@ const SignUp = () => {
   }
 
   return (
-    <div className="sign-up__container">
+    <div className="sign-in__container">
       {
         showSuccessMessage ? (
           <Success>
@@ -42,14 +45,8 @@ const SignUp = () => {
           </Success>
         ) : (
           <>
-            <Title>Sign up</Title>
-            <Form className="sign-up__form">
-              <Input
-                label="Name"
-                placeholder="Your name"
-                onChange={ value => setValue('username', value) }
-                validator={nameValidation}
-              />
+            <Title>Sign In</Title>
+            <Form className="sign-in__form">
               <Input
                 validator={emailValidator}
                 label="Email"
@@ -64,14 +61,7 @@ const SignUp = () => {
                 validator={passwordValidator}
                 onChange={value=>setValue('password', value)}
               />
-              <Input
-                label="ConfirmPassword"
-                type="password"
-                placeholder="Your password"
-                validator={passwordValidator}
-                onChange={value=>setValue('confirmPassword', value)}
-              />
-              <Button fullWidth onClick={onSubmit}>Sign Up</Button>
+              <Button fullWidth onClick={onSubmit}>Sign In</Button>
             </Form>
           </>
         )
@@ -80,4 +70,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp;
+export default SignIn;

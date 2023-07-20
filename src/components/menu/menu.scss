@@ -1,12 +1,17 @@
 @import "src/styles/sizes";
 
 .menu {
-  height: $menuHeight;
-  background-color: #2231AA;
-  display: flex;
-  justify-content: space-between;
+  min-height: $menuHeight;
 
   &__right {
     display: flex;
+  }
+
+  &__body {
+    height: $menuHeight;
+    background-color: #2231AA;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 }

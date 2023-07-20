@@ -8,13 +8,8 @@ import { useMemo } from "react";
 import {useLocation} from "react-router";
 import {ROUTES} from "../../constants/routes";
 // import {ROUTES} from "../../constants/routes";
-import {useCallback} from "react";
 
-const Menu = ({ user }) => {
-  const navigate = useNavigate();
-  const goToSignUp = useCallback(() => {
-    navigate(ROUTES.signUp);
-  }, []);
+const Menu = () => {
   const location = useLocation();
   const isPostsPage = useMemo(
     () => location.pathname.includes(ROUTES.posts),
@@ -23,13 +18,13 @@ const Menu = ({ user }) => {
 
   return (
     <div className="menu">
-      <MenuButton />
-      {/*<NavLink style={{ color: '#ffffff' }} to={ROUTES.signUp}>Go to sign up</NavLink>*/}
-      {/*<button onClick={goToSignUp}>Go to sign up</button>*/}
-      <div className="menu__right">
-        { isPostsPage && <MenuSearch /> }
-        <UserProfile user={user} />
-      </div>
+     <div className="menu__body">
+       <MenuButton />
+       <div className="menu__right">
+         { isPostsPage && <MenuSearch /> }
+         <UserProfile />
+       </div>
+     </div>
     </div>
   )
 };

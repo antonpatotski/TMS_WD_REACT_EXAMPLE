@@ -6,12 +6,6 @@ import { ThemeContext } from "./context/theme";
 import { THEME } from "./components/themeToggle/themeToggler";
 
 import './App.scss';
-import usePosts from "./hooks/usePosts";
-
-const user = {
-  firstName: 'Antonio',
-  lastName: 'Front-endas'
-}
 
 function App() {
   const [ theme, setTheme ] = useState(THEME.light);
@@ -19,7 +13,7 @@ function App() {
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
       <div className={`App App--${theme}`}>
-        <Menu user={user} />
+        <Menu />
 
         <div className="App__body">
           <RoutesComponent />
