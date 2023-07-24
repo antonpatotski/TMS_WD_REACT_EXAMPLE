@@ -1,13 +1,14 @@
-import {useContext, useEffect, useState} from "react";
+import {useState} from "react";
 
 import PostItem from "./postItem/postItem";
 import { TABS } from "../../../constants/tabs";
 import Tabs from "../../../components/tabs/tabs";
-
-import './allPosts.scss';
 import usePosts from "../../../hooks/usePosts";
 import Loading from "../../../components/loading/loading";
 import {STATUSES} from "../../../constants/statuses";
+
+import './allPosts.scss';
+import Pagination from "../../../components/pagination/pagintaion";
 
 const Posts = () => {
   const [ activeTab, setActiveTab ] = useState(TABS[0]?.key);
@@ -37,6 +38,8 @@ const Posts = () => {
             }
           </div>
         </div>
+
+        <Pagination />
       </div>
     </Loading>
   )

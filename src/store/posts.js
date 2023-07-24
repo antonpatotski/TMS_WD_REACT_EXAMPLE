@@ -5,12 +5,16 @@ import {STATUSES} from "../constants/statuses";
 // First, create the thunk
 export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
-  async () => {
+  async ({ search, url }) => {
     // Здесь только логика запроса и возврата данных
     // Никакой обработки ошибок
-    const { results: postsResponse } = await API.getPosts({ limit: 11, offset: 1 });
+    const config = { limit: 11 };
 
-    return postsResponse;
+    if (search) {
+      config.search = search;
+    }
+
+    return await API.getPosts({ params: config, url });
   }
 );
 
@@ -31,6 +35,8 @@ const postsSlice = createSlice({
     posts: [],
     search: '',
     status: STATUSES.init,
+    next: null,
+    previous: null,
     selectedPost: null,
   },
   reducers: {
@@ -49,7 +55,10 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         // Add posts to the state array
-        state.posts = action.payload;
+        const { next, previous, results } = action.payload;
+        state.posts = results;
+        state.next = next?.replace('http', 'https');
+        state.previous = previous?.replace('http', 'https');
         state.status = STATUSES.success;
       })
       .addCase(fetchPosts.rejected, (state) => {

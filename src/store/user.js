@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { API } from "../helpers/api";
-import {STATUSES} from "../constants/statuses";
-import {userSerializer} from "../helpers/serializers";
+import { STATUSES } from "../constants/statuses";
+import { userSerializer } from "../helpers/serializers";
 
 // First, create the thunk
 export const fetchUser = createAsyncThunk(

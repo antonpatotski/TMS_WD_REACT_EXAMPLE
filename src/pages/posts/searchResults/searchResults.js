@@ -1,17 +1,22 @@
 import PostItem from "../allPosts/postItem/postItem";
 import usePosts from "../../../hooks/usePosts";
-import { useSelector } from "react-redux";
-import { searchedPosts } from "../../../selectors/searchedPosts";
+import {useEffect, useState} from "react";
+import {useDebounce} from "../../../hooks/useDebounce";
 
 const SearchResults = () => {
-  const { search } = usePosts();
-  const postsResult = useSelector(searchedPosts);
+  const { search, posts, updatePosts } = usePosts();
+  const debounce = useDebounce();
+
+  useEffect(() => {
+    debounce({ search }, updatePosts);
+  }, [ search, debounce ]);
+  // const postsResult = useSelector(searchedPosts);
 
   return (
     <div>
       Search results: { search }
 
-      { postsResult
+      { posts
         .map(post => (
           <PostItem post={post} size="small" />
         ))

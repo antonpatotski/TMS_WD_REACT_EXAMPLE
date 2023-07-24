@@ -9,11 +9,11 @@ import { fetchPosts } from "../../store/posts";
 import usePosts from "../../hooks/usePosts";
 
 const Posts = () => {
-  const { search } = usePosts();
+  const { search, updatePosts } = usePosts();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    updatePosts();
   }, [])
 
   return (
